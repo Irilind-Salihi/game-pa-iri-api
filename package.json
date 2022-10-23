@@ -1,0 +1,14 @@
+{
+  "name": "game-pa-iri-api",
+  "version": "1.0.0",
+  "description": "An api to manage online save and stats",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Irilind Salihi / Pierre-Alexandre Pagin",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
