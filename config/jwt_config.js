@@ -1,3 +1,3 @@
 module.exports = {
-    SECRET: "bezkoder-secret-key"
+    SECRET: "MorbierDuJura"
   };
