@@ -19,13 +19,13 @@ const checkTokenMiddleware = (req, res, next) => {
 
     // Présence d'un token
     if (!token) {
-        return res.status(401).json({ message: 'Error. Need a token' })
+        return res.status(401).json({ message: 'Error. Need a token', success: false })
     }
 
     // Véracité du token
     jwt.verify(token, SECRET, (err, decodedToken) => {
         if (err) {
-            res.status(401).json({ message: 'Error. Bad token' })
+            res.status(401).json({ message: 'Error. Bad token', success: false })
         } else {
             return next()
         }
