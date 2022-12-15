@@ -41,4 +41,28 @@ router.post('/search', (req, res) => {
         .catch(err =>res.json(err))
 })
 
+router.get('/goodKarma', (req, res) => {
+    GameRecord.findAll({
+        attributes :['username'],
+        limit: 3,
+        distinct : "username",
+        order : [[ 'karma', 'DESC']]
+    })
+        .then(gameRecord => res.json(gameRecord))
+        .catch(err =>res.json(err))
+})
+
+router.get('/badKarma', (req, res) => {
+    GameRecord.findAll({
+        attributes :['username'],
+        limit: 3,
+        distinct : "username",
+        order : [[ 'karma', 'ASC']]
+    })
+        .then(gameRecord => res.json(gameRecord))
+        .catch(err =>res.json(err))
+})
+
+
+
 module.exports = router;
