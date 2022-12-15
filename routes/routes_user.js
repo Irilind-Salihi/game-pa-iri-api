@@ -21,9 +21,9 @@ router.post('/login', (req, res) => {
                     id: user.id,
                     username: user.username
                 }, SECRET.SECRET, { expiresIn: '100 hours' })
-                res.json({ access_token: token })
+                res.json({success:true, access_token: token })
             } else {
-                res.status(400).json({ message: 'Error. Wrong login or password' })
+                res.status(400).json({success : false ,message: 'Error. Wrong login or password' })
             }
         })
         .catch(err => console.log(err))
