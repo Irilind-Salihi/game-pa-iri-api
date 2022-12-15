@@ -25,8 +25,7 @@ app.use(express.urlencoded({ extended: true })) // Activation de x-wwww-form-url
 
 //Route list
 
-app.use("/user", require("./routes/routes_user"))
-
+app.use("/gameRecord", require("./routes/routes_gameRecord"))
 //Default route
 app.get('*', (req, res) => {
     return res.status(404).json({ message: 'Page not found' })
