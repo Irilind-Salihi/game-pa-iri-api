@@ -11,10 +11,18 @@ const SECRET = require('../config/jwt_config')
 //create user route
 router.post('/', (req, res) => {
     const username = req.body.username
-    const password = req.body.password
+    const sawmill = req.body.sawmill
+    const mine = req.body.mine
+    const barracks = req.body.barracks
+    const bank = req.body.bank
+    const karma = req.body.karma
     User.create({
         username: username,
-        password: password
+        sawmill: sawmill,
+        mine: mine,
+        barracks: barracks,
+        bank: bank,
+        karma: karma,
     })
         .then(user => res.json(user))
         .catch(err =>res.json(err))
