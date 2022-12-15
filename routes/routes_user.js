@@ -22,6 +22,7 @@ router.post('/login', (req, res) => {
                     username: user.username
                 }, SECRET.SECRET, { expiresIn: '100 hours' })
                 res.json({success:true, access_token: token })
+
             } else {
                 res.status(400).json({success : false ,message: 'Error. Wrong login or password' })
             }
@@ -41,4 +42,10 @@ router.post('/', (req, res) => {
         .then(user => res.json(user))
         .catch(err =>res.json(err))
 })
+
+//route to check if the token is valid else return error
+router.post('/check', checkTokenMiddleware, (req, res) => {
+    res.json({ message: 'Token is valid' ,success: true})
+})
+
 module.exports = router;
