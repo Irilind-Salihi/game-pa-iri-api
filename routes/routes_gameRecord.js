@@ -11,6 +11,7 @@ const SECRET = require('../config/jwt_config')
 //create user route
 router.post('/', (req, res) => {
     const username = req.body.username
+    const nbTurn = req.body.nbTurn
     const sawmill = req.body.sawmill
     const mine = req.body.mine
     const barracks = req.body.barracks
@@ -18,6 +19,7 @@ router.post('/', (req, res) => {
     const karma = req.body.karma
     User.create({
         username: username,
+        nbTurn: nbTurn,
         sawmill: sawmill,
         mine: mine,
         barracks: barracks,

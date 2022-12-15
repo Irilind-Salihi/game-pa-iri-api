@@ -12,6 +12,10 @@ const GameRecord = db.define('gameRecord', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    nbTurn: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
     sawmill: {
         type: Sequelize.INTEGER,
         allowNull: false
@@ -37,4 +41,4 @@ const GameRecord = db.define('gameRecord', {
     modelName: 'GameRecord'
 });
 
-module.exports = User;
+module.exports = GameRecord;
