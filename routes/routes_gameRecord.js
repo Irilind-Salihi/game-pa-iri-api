@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../db/database')
-const User = require('../models/gameRecordModel')
+const GameRecord = require('../models/gameRecordModel')
 const { extractBearerToken, checkTokenMiddleware } = require('../middleware/token_check')
 const jwt = require('jsonwebtoken')
 const SECRET = require('../config/jwt_config')
@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
     const barracks = req.body.barracks
     const bank = req.body.bank
     const karma = req.body.karma
-    User.create({
+    GameRecord.create({
         username: username,
         nbTurn: nbTurn,
         sawmill: sawmill,
@@ -26,7 +26,18 @@ router.post('/', (req, res) => {
         bank: bank,
         karma: karma,
     })
-        .then(user => res.json(user))
+        .then(gameRecord => res.json(gameRecord))
+        .catch(err =>res.json(err))
+})
+
+router.post('/search', (req, res) => {
+    const username = req.body.username
+
+    GameRecord.findOne({
+        where: {"username" : username},
+        order : [[ 'createdAt', 'DESC']]
+    })
+        .then(gameRecord => res.json(gameRecord))
         .catch(err =>res.json(err))
 })
 
