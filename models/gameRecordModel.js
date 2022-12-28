@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require ('../db/database');
 
+//Sequelize db model for the game record
 const GameRecord = db.define('gameRecord', {
     id_game: {
         type: Sequelize.INTEGER,

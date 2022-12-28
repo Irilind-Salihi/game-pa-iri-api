@@ -8,7 +8,7 @@ const SECRET = require('../config/jwt_config')
 
 
 
-//create user route
+//post route to create a game record
 router.post('/', (req, res) => {
     const username = req.body.username
     const nbTurn = req.body.nbTurn
@@ -17,6 +17,7 @@ router.post('/', (req, res) => {
     const barracks = req.body.barracks
     const bank = req.body.bank
     const karma = req.body.karma
+    //Use model to create my gamerecord
     GameRecord.create({
         username: username,
         nbTurn: nbTurn,
@@ -30,6 +31,7 @@ router.post('/', (req, res) => {
         .catch(err =>res.json(err))
 })
 
+//post route to search a game for a specific user
 router.post('/search', (req, res) => {
     const username = req.body.username
 
@@ -41,6 +43,7 @@ router.post('/search', (req, res) => {
         .catch(err =>res.json(err))
 })
 
+//get route to get the three player with the best karma
 router.get('/goodKarma', (req, res) => {
     GameRecord.findAll({
         attributes :['username'],
@@ -51,7 +54,7 @@ router.get('/goodKarma', (req, res) => {
         .then(gameRecord => res.json(gameRecord))
         .catch(err =>res.json(err))
 })
-
+//get route to get the three player with the worse karma
 router.get('/badKarma', (req, res) => {
     GameRecord.findAll({
         attributes :['username'],

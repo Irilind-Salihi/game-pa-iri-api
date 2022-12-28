@@ -5,7 +5,6 @@ const cors = require('cors')
 
 //db config import
 const db = require('./db/database')
-
 const PORT = 1234
 
 
@@ -14,7 +13,7 @@ db.authenticate()
     .then(() => console.log('Database connected...'))
     .catch(err => console.log('Error: ' + err))
 
-// Initialisation de Express
+// Express Init
 const app = express()
 
 app.use(cors())                                 // Activation de CORS
@@ -23,9 +22,9 @@ app.use(express.urlencoded({ extended: true })) // Activation de x-wwww-form-url
 
 
 
-//Route list
-
+//Route for game record
 app.use("/gameRecord", require("./routes/routes_gameRecord"))
+
 //Default route
 app.get('*', (req, res) => {
     return res.status(404).json({ message: 'Page not found' })
@@ -35,6 +34,5 @@ app.get('*', (req, res) => {
 
 //Server start
 app.listen(PORT, () => {
-    
     console.log(`Server is running on port ${PORT}.`)
 })
